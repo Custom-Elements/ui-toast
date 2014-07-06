@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>ui-toast</title>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="node_modules/polymer/platform.js"></script>
+    <link rel="import" href="node_modules/polymer/polymer.html">
+    <link rel="import" href="src/ui-toast.html">
+    <link rel="stylesheet" href="node_modules/ui-styles/typography.less">
+    <style>
+      body {
+        font-family: "Helvetica Neue", "Helvetica", Arial;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <p>Click the page for a warning!</p>
+    <div id="holder">
+      <ui-toast>
+        Touch me. I vanish. I am a very stern error message!
+      </ui-toast>
+    </div>
+    <script>
+      document.addEventListener('polymer-ready', function() {
+        //poke your element here
+      })
+      document.addEventListener('click', function() {
+        document.querySelector('ui-toast').show()
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="./ui-toast-light.less">
+<polymer-element name="ui-toast" attributes="timeout" on-click="{{onClick}}">
+<template>
+  <link rel="stylesheet" type="text/css" href="./ui-toast.less">
+  <section id="backdrop" horizontal layout center>
+    <section id="effect" horizontal layout center>
+      <content></content>
+    </section>
+  </section>
+</template>
+<script src="./ui-toast.litcoffee"></script>
+</polymer-element>
