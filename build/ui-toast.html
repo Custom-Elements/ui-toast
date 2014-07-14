@@ -1,0 +1,318 @@
+<style>.hide {
+  display: none !important;
+}
+.flat {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.01), rgba(51, 51, 51, 0.02) 80%, rgba(51, 51, 51, 0.01));
+}
+.ultra-dark-tint {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.85), rgba(51, 51, 51, 0.91) 80%, rgba(51, 51, 51, 0.89));
+}
+.dark-tint {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.61), rgba(51, 51, 51, 0.67) 80%, rgba(51, 51, 51, 0.65));
+}
+.light-tint {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.61), rgba(255, 255, 255, 0.67) 80%, rgba(255, 255, 255, 0.65));
+}
+.border {
+  box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.1) inset;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.1) inset;
+}
+.focused-border {
+  box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset;
+}
+.input-focused-border {
+  box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset, 0.3em 0em 0em 0em rgba(51, 51, 51, 0.33) inset;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset, 0.3em 0em 0em 0em rgba(51, 51, 51, 0.33) inset;
+}
+.cannot-select-text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.solid.flag:before {
+  font-size: 1.5em;
+  content: "\25a3";
+  font-style: normal;
+}
+.yellow.flag:before {
+  -webkit-text-fill-color: #fae843;
+  -webkit-text-stroke: 1px #454545;
+}
+.red.flag:before {
+  -webkit-text-fill-color: #ef272d;
+  -webkit-text-stroke: 1px #454545;
+}
+.green.flag:before {
+  -webkit-text-fill-color: #c8ed8d;
+  -webkit-text-stroke: 1px #454545;
+}
+.grey.flag:before {
+  -webkit-text-fill-color: rgba(51, 51, 51, 0.61);
+  -webkit-text-stroke: 1px #454545;
+}
+[animated] {
+  opacity: 1.0;
+  transition: width 0.2s ease-out, opacity 0.2s ease-out;
+  -webkit-transition: width 0.2s ease-out, opacity 0.2s ease-out;
+}
+[animated][hide] {
+  display: inline-block !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+[fadeout] {
+  opacity: 1.0;
+  transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
+}
+[fadeout][hide] {
+  opacity: 0 !important;
+}
+[closeup] {
+  opacity: 1.0;
+  transition: height 0.2s ease-out, opacity 0.2s ease-out;
+  -webkit-transition: height 0.2s ease-out, opacity 0.2s ease-out;
+}
+[closeup][hide] {
+  display: inline-block !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+[tile] {
+  padding: 1em;
+  background-color: rgba(51, 51, 51, 0.1);
+  border: 1px solid rgba(51, 51, 51, 0.1);
+}
+[animated] {
+  opacity: 1.0;
+  transition: width 0.2s ease-out, opacity 0.2s ease-out;
+  -webkit-transition: width 0.2s ease-out, opacity 0.2s ease-out;
+}
+[animated][hide] {
+  display: inline-block !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+[offscreen] {
+  transform: translateY(2000em);
+  -webkit-transform: translateY(2000em);
+}
+.slideUp {
+  animation: slideUp 1s 1 ease-out;
+  -webkit-animation: slideUp 1s 1 ease-out;
+}
+.slideDown {
+  animation: slideDown 1s 1 ease-out;
+  -webkit-animation: slideDown 1s 1 ease-out;
+}
+ui-toast {
+  color: #ffffff;
+}
+</style>
+<polymer-element name="ui-toast" attributes="timeout" on-click="{{onClick}}">
+<template>
+  <style>.hide {
+  display: none !important;
+}
+.flat {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.01), rgba(51, 51, 51, 0.02) 80%, rgba(51, 51, 51, 0.01));
+}
+.ultra-dark-tint {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.85), rgba(51, 51, 51, 0.91) 80%, rgba(51, 51, 51, 0.89));
+}
+.dark-tint {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.61), rgba(51, 51, 51, 0.67) 80%, rgba(51, 51, 51, 0.65));
+}
+.light-tint {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.61), rgba(255, 255, 255, 0.67) 80%, rgba(255, 255, 255, 0.65));
+}
+.border {
+  box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.1) inset;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.1) inset;
+}
+.focused-border {
+  box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset;
+}
+.input-focused-border {
+  box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset, 0.3em 0em 0em 0em rgba(51, 51, 51, 0.33) inset;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.33) inset, 0.3em 0em 0em 0em rgba(51, 51, 51, 0.33) inset;
+}
+.cannot-select-text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.solid.flag:before {
+  font-size: 1.5em;
+  content: "\25a3";
+  font-style: normal;
+}
+.yellow.flag:before {
+  -webkit-text-fill-color: #fae843;
+  -webkit-text-stroke: 1px #454545;
+}
+.red.flag:before {
+  -webkit-text-fill-color: #ef272d;
+  -webkit-text-stroke: 1px #454545;
+}
+.green.flag:before {
+  -webkit-text-fill-color: #c8ed8d;
+  -webkit-text-stroke: 1px #454545;
+}
+.grey.flag:before {
+  -webkit-text-fill-color: rgba(51, 51, 51, 0.61);
+  -webkit-text-stroke: 1px #454545;
+}
+[animated] {
+  opacity: 1.0;
+  transition: width 0.2s ease-out, opacity 0.2s ease-out;
+  -webkit-transition: width 0.2s ease-out, opacity 0.2s ease-out;
+}
+[animated][hide] {
+  display: inline-block !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+[fadeout] {
+  opacity: 1.0;
+  transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
+}
+[fadeout][hide] {
+  opacity: 0 !important;
+}
+[closeup] {
+  opacity: 1.0;
+  transition: height 0.2s ease-out, opacity 0.2s ease-out;
+  -webkit-transition: height 0.2s ease-out, opacity 0.2s ease-out;
+}
+[closeup][hide] {
+  display: inline-block !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+[tile] {
+  padding: 1em;
+  background-color: rgba(51, 51, 51, 0.1);
+  border: 1px solid rgba(51, 51, 51, 0.1);
+}
+[animated] {
+  opacity: 1.0;
+  transition: width 0.2s ease-out, opacity 0.2s ease-out;
+  -webkit-transition: width 0.2s ease-out, opacity 0.2s ease-out;
+}
+[animated][hide] {
+  display: inline-block !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+[offscreen] {
+  transform: translateY(2000em);
+  -webkit-transform: translateY(2000em);
+}
+.slideUp {
+  animation: slideUp 1s 1 ease-out;
+  -webkit-animation: slideUp 1s 1 ease-out;
+}
+.slideDown {
+  animation: slideDown 1s 1 ease-out;
+  -webkit-animation: slideDown 1s 1 ease-out;
+}
+:host {
+  box-sizing: border-box;
+  display: block;
+}
+:host #backdrop {
+  box-sizing: border-box;
+  z-index: 99999;
+  display: flex;
+  padding: 0.6em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  min-width: 12em;
+  min-height: 4em;
+  transition: 0.2s ease-out;
+  -webkit-transition: 0.2s ease-out;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+:host #backdrop.fadeout {
+  transform: translate3d(-100%, 0, 0);
+  -webkit-transform: translate3d(-100%, 0, 0);
+}
+:host #effect {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 1em 1.5em 1em 1.5em;
+  background-color: #333333;
+  background-image: linear-gradient(rgba(51, 51, 51, 0.61), rgba(51, 51, 51, 0.67) 80%, rgba(51, 51, 51, 0.65));
+  box-shadow: 0px 4px 1em rgba(51, 51, 51, 0.61);
+  -webkit-box-shadow: 0px 4px 1em rgba(51, 51, 51, 0.61);
+}
+</style>
+  <section id="backdrop" horizontal="" layout="" center="">
+    <section id="effect" horizontal="" layout="" center="">
+      <content></content>
+    </section>
+  </section>
+</template>
+<script built="/Users/rmai/gitrepo/custom-elements/ui-toast/src/ui-toast.litcoffee">(function e(t, n, r) {
+    function s(o, u) {
+        if (!n[o]) {
+            if (!t[o]) {
+                var a = typeof require == "function" && require;
+                if (!u && a) return a(o, !0);
+                if (i) return i(o, !0);
+                throw new Error("Cannot find module '" + o + "'");
+            }
+            var f = n[o] = {
+                exports: {}
+            };
+            t[o][0].call(f.exports, function(e) {
+                var n = t[o][1][e];
+                return s(n ? n : e);
+            }, f, f.exports, e, t, n, r);
+        }
+        return n[o].exports;
+    }
+    var i = typeof require == "function" && require;
+    for (var o = 0; o < r.length; o++) s(r[o]);
+    return s;
+})({
+    1: [ function(require, module, exports) {
+        Polymer("ui-toast", {
+            timeout: 3e3,
+            timeoutChanged: function() {
+                return this.timeout = Number(this.timeout);
+            },
+            show: function() {
+                this.$.backdrop.classList.remove("fadeout");
+                return this.async(this.hide, null, this.timeout);
+            },
+            hide: function() {
+                return this.$.backdrop.classList.add("fadeout");
+            },
+            onClick: function(evt) {
+                this.hide();
+                return evt.stopPropagation();
+            },
+            created: function() {},
+            ready: function() {},
+            attached: function() {
+                return this.hide();
+            },
+            domReady: function() {},
+            detached: function() {}
+        });
+    }, {} ]
+}, {}, [ 1 ]);</script>
+</polymer-element>

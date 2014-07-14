@@ -1,0 +1,9 @@
+{
+  "name": "ui-toast",
+  "description": "Polymer toast",
+  "version": "0.0.1",
+  "main": "build/ui-toast.html",
+  "ignore": [
+    "demo.html"
+  ]
+}
